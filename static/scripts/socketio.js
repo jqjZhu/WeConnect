@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   document.querySelector('#send_message').onclick = () => {
+    message = document.querySelector('#user_message').value;
     socket.send({'msg': document.querySelector('#user_message').value,
                   'username': username, 'message': message});
     // clear input area
