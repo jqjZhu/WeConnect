@@ -1,48 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
   var socket = io();
 
-  let message;
+  let room;
 
   socket.on('message', data => {
     const p = document.createElement('p');
     const span_username = document.createElement('span');
     const span_timestamp = document.createElement('span');
     const br = document.createElement('br');
-    span_username.innerHTML = data.username;
-    span_timestamp.innerHTML = data.time_stamp;
-    p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML + span_timestamp.outerHTML;
-    document.querySelector('#display-message-section').append(p);
+
+    if (data.username) {
+      span_username.innerHTML = data.username;
+      span_timestamp.innerHTML = data.time_stamp;
+      p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML + span_timestamp.outerHTML;
+      document.querySelector('#display-message-section').append(p);
+    } else {
+      printSysMsg(data.msg);
+    }
   });
 
 
   document.querySelector('#send_message').onclick = () => {
-    message = document.querySelector('#user_message').value;
     socket.send({'msg': document.querySelector('#user_message').value,
-                  'username': username, 'message': message});
+                  'username': username, 'room': room});
     // clear input area
     document.querySelector('#user_message').value = '';
   };
 
-  document.querySelectorAll('.select-message').forEach(p => {
+  document.querySelectorAll('.select-room').forEach(p => {
     p.onclick = () => {
-      let newMessage = p.innerHTML;
-      if (newMessage == message) {
-        msg = `You are already in ${message} message.`
+      let newRoom = p.innerHTML;
+      if (newRoom == room) {
+        msg = `You are already in ${room}.`
         printSysMsg(msg);
       } else {
-        leaveMessage(message);
-        joinMessage(newMessage);
-        message = newMessage;
+        leaveRoom(room);
+        joinRoom(newRoom);
+        room = newRoom;
       }
     }
   });
 
-  function leaveMessage(message) {
-    socket.emit('leave', {'username': username, 'message': message});
+  function leaveRoom(room) {
+    socket.emit('leave', {'username': username, 'room': room});
   }
 
-  function joinMessage(message) {
-    socket.emit('join', {'username': username, 'message': message});
+  function joinRoom(room) {
+    socket.emit('join', {'username': username, 'room': room});
     // clear message
     document.querySelector('#display-message-section').innerHTML = ''
     // autofocus on text box

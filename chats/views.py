@@ -8,26 +8,28 @@ from datetime import datetime
 from time import strftime, localtime
 
 chats = Blueprint('chats', __name__)
-MESSAGES = ["message1", "message2"]
+ROOMS = ["room1", "room2"]
 
 @chats.route('/chat', methods=['GET', 'POST'])
 @login_required
 def chat():
-    return render_template('chat.html', username=current_user.username, messages=MESSAGES)
+    return render_template('chat.html', username=current_user.username, rooms=ROOMS)
 
 @socketio.on('message')
 def message(data):
 
     print(f"\n\n{data}\n\n")
 
-    send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%b-%d %I:%M%P', localtime())}, messages=data['message'])
+    send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%b-%d %I:%M%P', localtime())}, room=data['room'])
 
 @socketio.on('join')
 def join(data):
 
-    join_room(data['message'])
+    join_room(data['room'])
+    send({'msg': data['username'] + " has joined the " + data['room']}, room=data['room'])
 
 
 @socketio.on('leave')
 def leave(data):
-     leave_room(data['message'])
+     leave_room(data['room'])
+     send({'msg': data['username'] + " has left the " + data['room']}, room=data['room'])
