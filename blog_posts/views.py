@@ -1,7 +1,8 @@
 from flask import render_template, url_for, flash, request, redirect, Blueprint
 from flask_login import current_user, login_required
-from models import BlogPost, db
+from models import BlogPost, BlogComment, db
 from blog_posts.forms import BlogPostForm
+from blog_posts.forms import BlogCommentForm
 
 blog_posts = Blueprint('blog_posts', __name__)
 
@@ -28,8 +29,17 @@ def create_post():
 @blog_posts.route('/<int:blog_post_id>')
 def blog_post(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
+    page = request.args.get('page',1,type=int)
+    blog_comments = BlogComment.query.order_by(BlogComment.date.desc()).paginate(page=page,per_page=10)
     return render_template('blog_post.html', title=blog_post.title,
-                            date=blog_post.date, post=blog_post)
+                            date=blog_post.date, post=blog_post, blog_comments=blog_comments)
+
+# @blog_posts.route('/<int:blog_post_id>/<int:blog_comment_id>')
+# def blog_post_with_comments(blog_post_id, blog_comment_id):
+#     blog_post = BlogPost.query.get_or_404(blog_post_id)
+#     blog_comment = BlogComment.query.get_or_404(blog_comment_id)
+#     return render_template('blog_post_with_comments.html', title=blog_post.title,
+#                             date=blog_post.date, post=blog_post, comment=blog_comment)
 
 
 #UPDATE
@@ -58,7 +68,6 @@ def update(blog_post_id):
 
     return render_template('create_post.html', title='Updating', form=form)
 
-
 #DELETE
 @blog_posts.route('/<int:blog_post_id>/delete', methods=['GET', 'POST'])
 @login_required
@@ -72,3 +81,21 @@ def delete_post(blog_post_id):
     db.session.commit()
     flash('Blog Post Deleted')
     return redirect(url_for('core.index'))
+
+#COMMENT
+@blog_posts.route('/<int:blog_post_id>/comment', methods=['GET', 'POST'])
+@login_required
+def create_comment(blog_post_id):
+    form = BlogCommentForm()
+
+    if form.validate_on_submit():
+
+        blog_comment = BlogComment(comment=form.comment.data,
+                                    user_id=current_user.id,
+                                    blog_post_id=blog_post_id)
+        db.session.add(blog_comment)
+        db.session.commit()
+        flash('Comment Successfully!')
+        return redirect(url_for('core.index'))
+
+    return render_template('create_comment.html', form=form)
