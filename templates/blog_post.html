@@ -17,9 +17,9 @@
   <button type="button" class="btn btn-danger"><a href="{{url_for('blog_posts.create_comment', blog_post_id=post.id)}}">Comment</a></button>
 
   <div class="container">
-    {% for comment in blog_comments.items %}
-      <!-- <a href="{{url_for('users.user_posts', username=comment.user_comment.username)}}">Commented by: {{comment.user_comment.username}}</a> -->
-      <p>{{comment.comment}}</p>
+    {% for comment in blog_comments %}
+      <p>User <a href="{{url_for('users.user_posts', username=comment.user_comment.username)}}">{{comment.user_comment.username}}</a>: {{comment.comment}}</p>
+      <p>{{comment.date.strftime('%B %d, %Y')}}</p>
     {% endfor %}
   </div>
 

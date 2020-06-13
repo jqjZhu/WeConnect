@@ -29,8 +29,8 @@ def create_post():
 @blog_posts.route('/<int:blog_post_id>')
 def blog_post(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
-    page = request.args.get('page',1,type=int)
-    blog_comments = BlogComment.query.order_by(BlogComment.date.desc()).paginate(page=page,per_page=10)
+    blog_comments = blog_post.comments
+    print(blog_comments)
     return render_template('blog_post.html', title=blog_post.title,
                             date=blog_post.date, post=blog_post, blog_comments=blog_comments)
 
@@ -86,6 +86,7 @@ def delete_post(blog_post_id):
 @blog_posts.route('/<int:blog_post_id>/comment', methods=['GET', 'POST'])
 @login_required
 def create_comment(blog_post_id):
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
     form = BlogCommentForm()
 
     if form.validate_on_submit():
@@ -96,6 +97,6 @@ def create_comment(blog_post_id):
         db.session.add(blog_comment)
         db.session.commit()
         flash('Comment Successfully!')
-        return redirect(url_for('core.index'))
+        return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
 
     return render_template('create_comment.html', form=form)
