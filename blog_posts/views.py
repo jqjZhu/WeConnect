@@ -74,8 +74,17 @@ def update(blog_post_id):
 def delete_post(blog_post_id):
 
     blog_post = BlogPost.query.get_or_404(blog_post_id)
+    blog_comments = blog_post.comments
     if blog_post.author != current_user:
         abort(403)
+
+
+    for blog_comment in blog_comments:
+        db.session.delete(blog_comment)
+
+    print("test"*50, blog_comments)
+    print("test"*50, blog_post)
+    
 
     db.session.delete(blog_post)
     db.session.commit()
