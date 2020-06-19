@@ -34,6 +34,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"Username {self.username}"
 
+
 class BlogPost(db.Model):
 
     __tablename__ = 'blog_post'
@@ -56,21 +57,38 @@ class BlogPost(db.Model):
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- {self.title}"
 
-# class ChatHistory(db.Model):
 
-#     users = db.relationship(User)
+# class ChatHistory(db.Model):
+#     __tablename__ = 'chathistory'
 
 #     id = db.Column(db.Integer, primary_key = True)
-#     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) #sender_id
+#     user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+#     user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
 
-#     create_time = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-#     # content = db.Column(db.Text, nullable = False)
-#     # receiver_id = db.Column(db.String(140), nullable = False)
-#     # read = db.Column(db.Boolean)
+#     date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+#     content = db.Column(db.Text, nullable = False)
+#     read = db.Column(db.Boolean)
+
+#     def __init__(self, user1_id, user2_id, content):
+#         self.content = content
+#         self.user1_id = user1_id
+#         self.user2_id = user2_id
+
+#     def __repr__(self):
+#         return f"user1_id: {self.user1_id} -- user2_id: {self.user2_id} -- Date: {self.date} --- {self.content}"
+
+# class Chats(db.Model):
+#     __tablename__ = 'chat'
+
+#     id = db.Column(db.Integer, primary_key = True)
+#     user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+#     user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+
 
 #     def __init__(self, content, user_id):
 #         self.content = content
 #         self.user_id = user_id
+
 
 class BlogComment(db.Model):
     __tablename__ = 'blog_comment'
