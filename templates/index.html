@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
-      <form class="form-group" method="POST">
-        {{form.hidden_tag()}}
-        <div class="form-group">
-          <p>Anything new you want to share?</p>
-          {{form.text(class="form-control form-control-lg")}}
+    <div id="post-head" class="container">
+      <div class="card">
+          <div class="card-body">
+            <form class="form-group" method="POST">
+              {{form.hidden_tag()}}
+              <div class="form-group">
+                <p>Anything new you want to share?</p>
+                {{form.text(class="form-control form-control-lg")}}
+              </div>
+              <div class="form-group">
+                {{form.submit(class="btn btn-outline-info")}}
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="form-group">
-          {{form.submit(class="btn btn-outline-info")}}
-        </div>
-      </form>
-
+      
       {% for post in blog_posts.items %}
         <div class="card">
           <div class="card-body">
-            <h2><a class="card-title" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">{{post.title}}</a></h2>
-            <a href="{{url_for('users.user_posts', username=post.author.username)}}">Written By: {{post.author.username}}</a>
-            <p>Published on: {{post.date.strftime('%Y-%m_%d')}}</p>
+            <!-- <h2><a class="card-title" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">{{post.title}}</a></h2> -->
+            <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a>
+            <p>{{post.date.strftime('%Y-%m_%d')}}</p>
+            <p>{{post.text}}</p>
             <a class="btn btn-primary" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">Read Blog Post</a>
           </div>
         </div>

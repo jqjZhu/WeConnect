@@ -17,7 +17,7 @@ body {
     margin: 0 auto;
     margin-top: 200px;
     padding: 20px 50px;
-    background-color: #00000090;
+    background-color: rgba(255,255,255,0.5);
     width: 400px;
     height: 275px;
     border-radius: 10px;
@@ -28,7 +28,7 @@ body {
     margin: 0 auto;
     margin-top: 180px;
     padding: 20px 50px;
-    background-color: #00000090;
+    background-color: rgba(255,255,255,0.5);
     width: 400px;
     height: 375px;
     border-radius: 10px;
@@ -36,16 +36,16 @@ body {
 }
 
 #loginBox p {
-    color: white;
+    color: black;
     margin-top: 8px;
 }
 
 #loginBox h1{
-    color: white;
+    color: black;
 }
 
 #registerBox h1{
-    color: white;
+    color: black;
 }
 
 #loginBox .inputBox {
@@ -127,4 +127,4 @@ ul li:hover a {
 }
 
 
-
+#post-head .form-group { font-family: Papyrus, fantasy; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: Papyrus, fantasy; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: Papyrus, fantasy; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Papyrus, fantasy; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Papyrus, fantasy; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }

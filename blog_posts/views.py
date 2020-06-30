@@ -14,7 +14,7 @@ def create_post():
 
     if form.validate_on_submit():
 
-        blog_post = BlogPost(title=form.title.data,
+        blog_post = BlogPost(
                             text=form.text.data,
                             user_id=current_user.id)
         db.session.add(blog_post)
@@ -31,7 +31,7 @@ def blog_post(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
     blog_comments = blog_post.comments
     print(blog_comments)
-    return render_template('blog_post.html', title=blog_post.title,
+    return render_template('blog_post.html',
                             date=blog_post.date, post=blog_post, blog_comments=blog_comments)
 
 
@@ -49,7 +49,6 @@ def update(blog_post_id):
 
     if form.validate_on_submit():
 
-        blog_post.title = form.title.data
         blog_post.text = form.text.data,
         db.session.commit()
         flash('Blog Post Updated')

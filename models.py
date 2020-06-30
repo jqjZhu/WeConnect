@@ -45,18 +45,16 @@ class BlogPost(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-    title = db.Column(db.String(140), nullable = False)
     text = db.Column(db.Text, nullable = False)
 
     comments = db.relationship('BlogComment', backref = 'post_comment', lazy = True)
 
-    def __init__(self, title, text, user_id):
-        self.title = title
+    def __init__(self, text, user_id):
         self.text = text
         self.user_id = user_id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} --- {self.title}"
+        return f"Post ID: {self.id} -- Date: {self.date}"
 ############################################################################################
 # class Chat(db.Model):
 #     __tablename__ = 'chat'

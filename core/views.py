@@ -15,7 +15,7 @@ def index():
 
     if form.validate_on_submit():
 
-        blog_post = BlogPost(title=form.title.data,
+        blog_post = BlogPost(
                             text=form.text.data,
                             user_id=current_user.id)
         db.session.add(blog_post)
