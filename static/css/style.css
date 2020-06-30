@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/img/bg.jpeg");
+    background-repeat: no-repeat;
+}
+
+.container {
+    margin-left: 120px;
+}
+
+.jumbotron {
+    margin-left: 120px;
+}
+
+#loginBox {
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 20px 50px;
+    background-color: #00000090;
+    width: 400px;
+    height: 275px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#registerBox {
+    margin: 0 auto;
+    margin-top: 180px;
+    padding: 20px 50px;
+    background-color: #00000090;
+    width: 400px;
+    height: 375px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#loginBox p {
+    color: white;
+    margin-top: 8px;
+}
+
+#loginBox h1{
+    color: white;
+}
+
+#registerBox h1{
+    color: white;
+}
+
+#loginBox .inputBox {
+    margin-top: 5px;
+}
+
+#registerBox .inputBox {
+    margin-top: 5px;
+}
+
+#loginBox .inputBox .inputText {
+    margin-top: 10px;
+}
+
+#registerBox .inputBox .inputText {
+    margin-top: 10px;
+}
+
+#loginBox .inputBox .inputText input {
+    border: 0;
+    padding: 10px 10px;
+    border-bottom: 1px solid white;
+    background-color: #00000000;
+    color: white;
+}
+
+#registerBox .inputBox .inputText input {
+    border: 0;
+    padding: 10px 10px;
+    border-bottom: 1px solid white;
+    background-color: #00000000;
+    color: white;
+}
+
+#loginBox .inputBox .inputButton {
+    border: 0;
+    width: 150px;
+    height: 25px;
+    color: black;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
+
+#registerBox .inputBox .inputButton {
+    border: 0;
+    width: 150px;
+    height: 25px;
+    color: black;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0px;
+    width: 200px;
+    height: 100%;
+    background: #00000090;
+}
+
+.sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 35px;
+    font-size: 18px;
+    color: white;
+    padding-left: 15px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid black;
+    transition: .4s;
+}
+
+ul li:hover a {
+    padding-left: 55px;
+}
+
+
+

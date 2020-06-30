@@ -5,8 +5,6 @@
   <h2>Written by: {{post.author.username}}</h2>
   <h2>Published: {{post.date.strftime('%B %d, %Y')}}</h2>
   <p>{{post.text}}</p>
-
-
   {% if post.author == current_user %}
   <div>
     <a href="{{url_for('blog_posts.update', blog_post_id=post.id)}}">Update</a>
@@ -15,14 +13,12 @@
   {% endif %}
   <br>
   <button type="button" class="btn btn-danger"><a href="{{url_for('blog_posts.create_comment', blog_post_id=post.id)}}">Comment</a></button>
-
   <div class="container">
     {% for comment in blog_comments %}
       <p>User <a href="{{url_for('users.user_posts', username=comment.user_comment.username)}}">{{comment.user_comment.username}}</a>: {{comment.comment}}</p>
       <p>{{comment.date.strftime('%B %d, %Y')}}</p>
     {% endfor %}
   </div>
-
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" id="del_modal">

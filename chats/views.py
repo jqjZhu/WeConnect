@@ -1,4 +1,5 @@
 from models import db
+# , ChatHistory, Chat
 from __init__ import socketio, app
 #question: why do I still need to import socketio here as socketio has been imported from project
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
@@ -17,7 +18,6 @@ def chat():
 
 @socketio.on('message')
 def message(data):
-
     print(f"\n\n{data}\n\n")
 
     send({'msg': data['msg'], 'username': data['username'], 'time_stamp': strftime('%b-%d %I:%M%P', localtime())}, room=data['room'])

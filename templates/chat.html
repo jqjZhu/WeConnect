@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="container">
   <div id="main-section">
     <nav id="sidebar">
       <h4>Chat</h4>
@@ -10,23 +11,22 @@
     <div id="rightside_pannel">
       <div id="display-message-section">
       </div>
+      <ul id="messages">
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
       <div id="input-area">
         <input type="text" id="user_message" placeholder="Type here..." autocomplete="off">
         <button type="button" id="send_message">SEND</button>
       </div>
     </div>
   </div>
-
   <script type="text/javascript">
     const username = `{{ username }}`;
   </script>
-
-
   <script src="{{ url_for('static', filename='scripts/chat_page.js') }}"></script>
-
-
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-
   <script src="{{ url_for('static', filename='scripts/socketio.js') }}"></script>
-  </body>
+</div>
 {% endblock %}

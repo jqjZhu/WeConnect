@@ -20,7 +20,8 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
 
     posts = db.relationship('BlogPost', backref = 'author', lazy = True)
-    # chats = db.relationship('ChatHistory', backref = 'author', lazy = True)
+    # sender = db.relationship('Chat', backref = 'sender_chat', lazy = True)
+    # receiver = db.relationship('Chat', backref = 'receiver_chat', lazy = True)
     comments = db.relationship('BlogComment', backref = 'user_comment', lazy = True)
 
     def __init__(self, email, username, password):
@@ -56,40 +57,45 @@ class BlogPost(db.Model):
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} --- {self.title}"
+############################################################################################
+# class Chat(db.Model):
+#     __tablename__ = 'chat'
+#     __table_args__ = {'extend_existing': True} 
+
+#     id = db.Column(db.Integer, primary_key = True)
+#     sender_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+#     receiver_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+
+#     chat_history = db.relationship('ChatHistory', backref = 'chat_history', lazy = True)
+#     sender = db.relationship('User', foreign_keys=[sender_id])
+#     receiver = db.relationship('User', foreign_keys=[receiver_id])
+
+#     def __init__(self, sender_id):
+#         self.sender_id = sender_id
+#         self.receiver_id = receiver_id
+
+#     def __repr__(self):
+#         return f"sender_id: {self.sender_id}"
 
 
 # class ChatHistory(db.Model):
 #     __tablename__ = 'chathistory'
+#     __table_args__ = {'extend_existing': True} 
 
 #     id = db.Column(db.Integer, primary_key = True)
-#     user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
-#     user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
+#     chat_id = db.Column(db.Integer, db.ForeignKey('chat.id'), nullable = False)
 
 #     date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 #     content = db.Column(db.Text, nullable = False)
-#     read = db.Column(db.Boolean)
+#     read = db.Column(db.Boolean, default=False)
 
-#     def __init__(self, user1_id, user2_id, content):
+#     def __init__(self, content):
 #         self.content = content
-#         self.user1_id = user1_id
-#         self.user2_id = user2_id
 
 #     def __repr__(self):
-#         return f"user1_id: {self.user1_id} -- user2_id: {self.user2_id} -- Date: {self.date} --- {self.content}"
+#         return f"Date: {self.date} Contend: {self.content}"
 
-# class Chats(db.Model):
-#     __tablename__ = 'chat'
-
-#     id = db.Column(db.Integer, primary_key = True)
-#     user1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
-#     user2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False) 
-
-
-#     def __init__(self, content, user_id):
-#         self.content = content
-#         self.user_id = user_id
-
-
+############################################################################################
 class BlogComment(db.Model):
     __tablename__ = 'blog_comment'
     __table_args__ = {'extend_existing': True} 
