@@ -9,7 +9,7 @@ from datetime import datetime
 from time import strftime, localtime
 
 chats = Blueprint('chats', __name__)
-ROOMS = ["room1", "room2"]
+ROOMS = ["Resume Discussion", "Job Search Discussion", "Interview Experience"]
 
 @chats.route('/chat', methods=['GET', 'POST'])
 @login_required

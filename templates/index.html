@@ -1,48 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
-    <div id="post-head" class="container">
-      <div class="card">
-          <div class="card-body">
-            <form class="form-group" method="POST">
-              {{form.hidden_tag()}}
-              <div class="form-group">
-                <p>Anything new you want to share?</p>
-                {{form.text(class="form-control form-control-lg")}}
-              </div>
-              <div class="form-group">
-                {{form.submit(class="btn btn-outline-info")}}
-              </div>
-            </form>
-          </div>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group" method="POST">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+          <p>Anything new you want to share?</p>
+          {{form.text(class="form-control form-control-lg")}}
         </div>
-      
-      {% for post in blog_posts.items %}
-        <div class="card">
-          <div class="card-body">
-            <!-- <h2><a class="card-title" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">{{post.title}}</a></h2> -->
-            <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a>
-            <p>{{post.date.strftime('%Y-%m_%d')}}</p>
-            <p>{{post.text}}</p>
-            <a class="btn btn-primary" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">Read Blog Post</a>
-          </div>
+        <div class="form-group">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.submit(class="btn btn-outline-info")}}
         </div>
-      {% endfor %}
+      </form>
     </div>
+  </div>
+      
+  {% for post in blog_posts.items %}
+  <div id="container">
+    <div class="article">
+        <div class="card">
+        <div class="card-body">
+          <p>
+            <img align='center' src="{{url_for('static', filename='profile_pics/' + post.author.profile_image)}}" width="40" height="40" style="border-radius: 15px;margin-top: 8px;">
+            &nbsp;&nbsp;
+            <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{post.author.username}}</a><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left: 0">{{post.date.strftime('%m/%d/%Y, %H:%M:%S')}}</span>
+            <br>
+            <div>{{post.text}}</div>
+          </p>
+          <div>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+            </svg>
+            <span>:{{post.save_num}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+              <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+            </svg>
+            <span>:{{post.click_num}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+            </svg><span>:{{post.love_num}}</span>
+          </div>
+          <a class="inputButton" href="{{url_for('blog_posts.blog_post', blog_post_id=post.id)}}">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
-    <nav aria-label='Page Navigation example'>
-      <ul class="pagination justify-content-center">
-        {%for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2)%}
-          {% if blog_posts.page == page_num %}
-          <li class='page-item disabled'>
-            <a class="page-link" href="{{url_for('core.index', page=page_num)}}">{{page_num}}</a>
-          </li>
-          {% else %}
-          <li class='page-item'>
-            <a class="page-link" href="{{url_for('core.index',page=page_num)}}">{{page_num}}</a>
-          </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </nav>
+<nav aria-label='Page Navigation example'>
+  <ul class="pagination justify-content-center">
+    {%for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2)%}
+      {% if blog_posts.page == page_num %}
+      <li class='page-item disabled'>
+        <a class="page-link" href="{{url_for('core.index', page=page_num)}}">{{page_num}}</a>
+      </li>
+      {% else %}
+      <li class='page-item'>
+        <a class="page-link" href="{{url_for('core.index',page=page_num)}}">{{page_num}}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
 
 {% endblock %}
