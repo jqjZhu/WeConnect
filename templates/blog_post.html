@@ -44,7 +44,7 @@
                 </form>
                 {% for comment in blog_comments %}
                   <p>
-                    <img align='center' src="{{url_for('static', filename='profile_pics/' + post.author.profile_image)}}" width="40" height="40" style="border-radius: 15px;margin-top: 8px;">
+                    <img align='center' src="{{url_for('static', filename='profile_pics/' + comment.user_comment.profile_image)}}" width="40" height="40" style="border-radius: 15px;margin-top: 8px;">
                     &nbsp;&nbsp;
                    <a href="{{url_for('users.user_posts', username=comment.user_comment.username)}}">{{comment.user_comment.username}}</a>: {{comment.comment}}<br>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.date.strftime('%B %d, %Y')}}</p>
