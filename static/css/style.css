@@ -195,4 +195,14 @@ ul li:hover a {
     margin-right: 500px;
     margin-left: 110px;
 }
+
+#rightside_pannel #display-message-section #messages li {
+    border: 0;
+    width: 150px;
+    height: 25px;
+    color: black;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
+}
               
