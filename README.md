@@ -4,3 +4,17 @@ PinTrip is a mashup of Pinterest and Flickr to help users find photos of interes
 The explore feature allows users to discover trip boards created by other users. The favorites option allows a user to save other boards into their list of favorites for inspiration. The user's personal and favorite trips are saved in the database and users can revisit and modify their trips, maps, favorites at any given time.
 
 Once the trip board is complete, users can view a map of their trip which pins all of the favorite photo locations.
+
+# Technologies
+Python<br>
+Flask<br>
+SQLAlchemy
+Jinja2
+Javascript
+JQuery
+AJAX
+HTML
+CSS
+Bootstrap
+Flickr API
+Mapbox API
