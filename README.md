@@ -8,13 +8,21 @@ Once the trip board is complete, users can view a map of their trip which pins a
 # Technologies
 Python<br>
 Flask<br>
-SQLAlchemy
-Jinja2
-Javascript
-JQuery
-AJAX
-HTML
-CSS
-Bootstrap
-Flickr API
-Mapbox API
+Flask Socket.IO<br>
+SQLAlchemy<br>
+Jinja2<br>
+Javascript<br>
+JQuery<br>
+AJAX<br>
+HTML<br>
+CSS<br>
+Bootstrap<br>
+
+# Features
+Additional features include:
+
+Hashing passwords
+Caching API responses to file
+Implemented Autocomplete for City search
+93% Test coverage for all python files
+
