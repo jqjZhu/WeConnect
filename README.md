@@ -1,9 +1,5 @@
 # WeConnect
-PinTrip is a mashup of Pinterest and Flickr to help users find photos of interesting places to see on on their next trip. Users can create/remove their own personalized 'trip board' for each city they are interested in visiting. After a board has been created, users can search for photos with geotags in their chosen city and add/remove photos to/from the trip board.
-
-The explore feature allows users to discover trip boards created by other users. The favorites option allows a user to save other boards into their list of favorites for inspiration. The user's personal and favorite trips are saved in the database and users can revisit and modify their trips, maps, favorites at any given time.
-
-Once the trip board is complete, users can view a map of their trip which pins all of the favorite photo locations.
+WeConnect is a twitter-like platform to let people share information on their job searching, interview experience as well as all kind of techinal stuff. Users can start creating posts, personalize their username, change profile picture, update the email address they signed up with, and also join a chat room to communicate with other users once they registered an account.
 
 # Technologies
 Python<br>
@@ -18,11 +14,16 @@ HTML<br>
 CSS<br>
 Bootstrap<br>
 
-# Features
-Additional features include:
+# Upcomming features
+I'm currently working on:
 
-Hashing passwords
-Caching API responses to file
-Implemented Autocomplete for City search
-93% Test coverage for all python files
+convert the frontend to React.js<bt>
+user post liking<br>
+user post sharing<br>
+prettify chatroom<br>
+add private chatroom<br>
+user following
+
+# Sign Up
+
 
