@@ -17,7 +17,7 @@ Bootstrap<br>
 # Upcomming features
 I'm currently working on:
 
-* convert the frontend to React.js<bt>
+- convert the frontend to React.js<bt>
 - user post liking<br>
 - user post sharing<br>
 - prettify chatroom<br>
