@@ -27,3 +27,14 @@ I'm currently working on:
 # Sign Up & Log In
 <img width="1440" alt="Screen Shot 2020-07-07 at 8 32 10 AM" src="https://user-images.githubusercontent.com/45190366/86960728-cfeace00-c114-11ea-98ac-f5217c54d6f7.png">
 <img width="1440" alt="Screen Shot 2020-07-07 at 8 31 45 AM" src="https://user-images.githubusercontent.com/45190366/86960731-d24d2800-c114-11ea-993b-ca486417321b.png">
+
+# User Profile Update
+<img width="1439" alt="Screen Shot 2020-07-07 at 3 23 59 PM" src="https://user-images.githubusercontent.com/45190366/86960633-aa5dc480-c114-11ea-9512-02abdaa3250a.png">
+
+# Chat Room
+<img width="1440" alt="Screen Shot 2020-07-07 at 8 33 30 AM" src="https://user-images.githubusercontent.com/45190366/86960713-c8c3c000-c114-11ea-9bdb-a8cf5c0c2bbb.png">
+
+# User Posts
+<img width="1440" alt="Screen Shot 2020-07-07 at 8 32 34 AM" src="https://user-images.githubusercontent.com/45190366/86960723-ce210a80-c114-11ea-98d1-cd694e4abbf4.png">
+
+
