@@ -24,7 +24,6 @@ I'm currently working on:
 - add private chatroom<br>
 - user following
 
-# Sign Up
-https://user-images.githubusercontent.com/45190366/86960731-d24d2800-c114-11ea-993b-ca486417321b.png
-
-
+# Sign Up & Log In
+<img width="1440" alt="Screen Shot 2020-07-07 at 8 32 10 AM" src="https://user-images.githubusercontent.com/45190366/86960728-cfeace00-c114-11ea-98ac-f5217c54d6f7.png">
+<img width="1440" alt="Screen Shot 2020-07-07 at 8 31 45 AM" src="https://user-images.githubusercontent.com/45190366/86960731-d24d2800-c114-11ea-993b-ca486417321b.png">
